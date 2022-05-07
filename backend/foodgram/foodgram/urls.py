@@ -4,6 +4,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('users.urls')),
-    path('auth/', include('django.contrib.auth.urls')),
+    path('api/', include('users.urls')),
+    path('api/', include('api_foodgram.urls')),
 ]
