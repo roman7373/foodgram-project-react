@@ -1,7 +1,7 @@
 from django.db import models
 
 from users.models import User
-from .validators import validate_amount, validate_time
+from .validators import validate_value
 
 
 class Tag(models.Model):
@@ -10,7 +10,7 @@ class Tag(models.Model):
                             max_length=100)
     color = models.CharField('Цвет тега',
                              unique=True,
-                             max_length=10)
+                             max_length=60)
     slug = models.SlugField('Уникальный слаг', unique=True)
 
     class Meta:
@@ -40,7 +40,7 @@ class Recipe(models.Model):
     text = models.TextField('Описание', max_length=200)
     image = models.ImageField('Картинка', upload_to='recipes/images/')
     cooking_time = models.IntegerField(
-        'Время приготовления (в минутах)', validators=[validate_time])
+        'Время приготовления (в минутах)', validators=[validate_value])
     tags = models.ManyToManyField(
         Tag, related_name='recipes', verbose_name='Теги')
     author = models.ForeignKey(
@@ -60,7 +60,7 @@ class Recipe(models.Model):
 
 
 class RecipeIngredient(models.Model):
-    amount = models.IntegerField('Количество', validators=[validate_amount])
+    amount = models.IntegerField('Количество', validators=[validate_value])
     ingredient = models.ForeignKey(
         Ingredient, on_delete=models.CASCADE, verbose_name='Ингредиент')
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)

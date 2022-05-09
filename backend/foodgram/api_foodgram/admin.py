@@ -22,11 +22,6 @@ class IngredientAdmin(ImportExportActionModelAdmin):
     list_filter = ('name',)
 
 
-# class IngredientAdmin(admin.ModelAdmin):
-#    list_display = ('id', 'name', 'measurement_unit')
-#    list_filter = ('name',)
-
-
 class RecipeIgredientInline(admin.StackedInline):
     model = RecipeIngredient
     extra = 0
