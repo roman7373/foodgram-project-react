@@ -1,4 +1,4 @@
-name: foodgram
+name: foodgram_workflow
 
 on: [push]
 
