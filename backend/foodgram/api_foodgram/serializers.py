@@ -10,7 +10,6 @@ from online_service.models import (Cart, Favorite, Ingredient,
                                    Recipe, RecipeIngredient, Tag)
 
 
-
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
