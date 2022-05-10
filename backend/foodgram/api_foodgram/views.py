@@ -19,7 +19,6 @@ from .serializers import (CartSerializer, FavoriteSerializer,
                           TagSerializer)
 
 
-
 class TagViewSet(ListRetrieveGeneric):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
