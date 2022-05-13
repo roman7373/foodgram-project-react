@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
   backend:
-    build: ../backend
+    build: roman73/foodgram_backend:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -19,11 +19,11 @@ services:
       - ./.env
   
   frontend:
-    build: ../frontend
+    build: roman73/foodgram_frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
-      - backend
+      - db
   
   nginx:
     image: nginx:1.19.3
