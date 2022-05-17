@@ -1,4 +1,4 @@
-version: '3'
+version: '3.3'
 services:
   db:
     image: postgres:13.0-alpine
@@ -7,16 +7,7 @@ services:
     env_file:
       - ./.env
   backend:
-    image: roman73/foodgram_backend:latest
-    command: >
-      sh -c "python manage.py makemigrations users &&
-             python manage.py makemigrations  online_service &&
-             python manage.py makemigrations api_foodgram &&
-             python manage.py migrate &&
-             python manage.py collectstatic --no-input &&
-             python manage.py init_admin &&
-             python manage.py loaddata dump.json &&
-             gunicorn foodgram.wsgi:application --bind 0:8000"
+    image: roman73/infra_backend:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -26,7 +17,7 @@ services:
     env_file:
       - ./.env
   frontend:
-    image: roman73/foodgram_frontend:latest
+    image: roman73/infra_frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
@@ -46,3 +37,4 @@ services:
 volumes:
   static_value:
   media_value:
+  db_data:
