@@ -13,18 +13,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-AUTH_USER_MODEL = 'users.User'
 
 INSTALLED_APPS = [
     'api_foodgram.apps.ApiFoodgramConfig',
+    'online_service.apps.OnlineServiceConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'online_service.apps.OnlineServiceConfig',
-    'users.apps.UsersConfig',
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
@@ -71,7 +70,7 @@ DATABASES = {
         'USER': os.getenv('POSTGRES_USER', default='postgres'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='postgres'),
         'HOST': os.getenv('DB_HOST', default='db'),
-        'PORT': os.getenv('DB_PORT', default='5432')
+        'PORT': os.getenv('DB_PORT', default='5432'),
     }
 }
 
@@ -91,6 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
 
 LANGUAGE_CODE = 'en-us'
 
