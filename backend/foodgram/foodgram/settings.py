@@ -90,7 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
