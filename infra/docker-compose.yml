@@ -7,9 +7,7 @@ services:
     env_file:
       - ./.env
   backend:
-    build:
-      context: ../backend/foodgram/
-      dockerfile: Dockerfile
+    image: roman73/infra_backend:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -19,9 +17,7 @@ services:
     env_file:
       - ./.env
   frontend:
-    build:
-      context: ../frontend/
-      dockerfile: Dockerfile
+    image: roman73/infra_frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
   nginx:
