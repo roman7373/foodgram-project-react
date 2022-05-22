@@ -1,5 +1,6 @@
-from django.db import models
 from colorfield.fields import ColorField
+from django.db import models
+
 from users.models import User
 from .validators import validate_value
 
@@ -9,7 +10,7 @@ class Tag(models.Model):
                             unique=True,
                             max_length=100)
     color = models.ColorField('Цвет тега',
-                             default='#F000000')
+                              default='#F000000')
     slug = models.SlugField('Уникальный слаг', unique=True)
 
     class Meta:
