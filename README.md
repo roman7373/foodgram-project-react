@@ -91,7 +91,7 @@ scp nginx.conf <username>@<host>:/home/<username>/nginx.conf
 
 Проект развернут по адресу: http://84.252.140.197/
 
-User администратора
+User администратора:
 
 username: admin1
 
