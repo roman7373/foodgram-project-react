@@ -1,4 +1,3 @@
-from colorfield.fields import ColorField
 from django.db import models
 
 from users.models import User
@@ -9,8 +8,9 @@ class Tag(models.Model):
     name = models.CharField('Название тега',
                             unique=True,
                             max_length=100)
-    color = models.ColorField('Цвет тега',
-                              default='#F000000')
+    color = models.CharField('Цвет тега',
+                              unique=True,
+                              max_length=7)
     slug = models.SlugField('Уникальный слаг', unique=True)
 
     class Meta:
