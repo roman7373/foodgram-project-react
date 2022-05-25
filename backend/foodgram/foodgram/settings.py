@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'import_export',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -112,13 +113,29 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
+    'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
-    ],
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
     'DEFAULT_PAGINATION_CLASS': 'users.pagination.QueryPageSizePagination',
     'SEARCH_PARAM': 'name'
 }
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r"^/api/.*$"
+
 DJOSER = {
     'LOGIN_FIELD': 'email',
+    'HIDE_USERS': False,
+    'PERMISSIONS': {
+        "user": ('rest_framework.permissions.IsAuthenticated',),
+        "user_list": ('rest_framework.permissions.AllowAny',)
+    },
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserSerializer',
+        'user': 'users.serializers.CustomUserSerializer',
+        'current_user': 'users.serializers.CustomUserSerializer',
+    }
 }
