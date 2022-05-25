@@ -9,8 +9,8 @@ class Tag(models.Model):
                             unique=True,
                             max_length=100)
     color = models.CharField('Цвет тега',
-                              unique=True,
-                              max_length=7)
+                             unique=True,
+                             max_length=7)
     slug = models.SlugField('Уникальный слаг', unique=True)
 
     class Meta:
