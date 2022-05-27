@@ -8,9 +8,17 @@ from users.models import User
 from online_service.models import Recipe
 
 
-class IsFavoritedIsInCart(Enum):
+class IsFavorited(Enum):
     IN = 1
     NOT_IN = 0
+
+
+class IsInCart(Enum):
+    IN = 1
+    NOT_IN = 0
+#class IsFavoritedIsInCart(Enum):
+#    IN = 1
+#    NOT_IN = 0
 
 
 class RecipeFilter(filter.FilterSet):
@@ -25,12 +33,12 @@ class RecipeFilter(filter.FilterSet):
 
     def get_is_favorited(self, queryset, name, value):
         user = self.request.user
-        if value == IsFavoritedIsInCart.IN.value and user.is_authenticated:
+        if value == IsFavorited.IN.value and user.is_authenticated:
             return queryset.filter(favorites__user=user)
         return queryset
 
     def get_is_in_shopping_cart(self, queryset, name, value):
         user = self.request.user
-        if value == IsFavoritedIsInCart.IN.value and user.is_authenticated:
+        if value == IsInCart.IN.value and user.is_authenticated:
             return queryset.filter(shopping_cart__user=user)
         return queryset

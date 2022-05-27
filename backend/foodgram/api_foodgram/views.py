@@ -66,6 +66,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
     def favorite(self, request, id):
         return self.favorite_or_cart(
             request, id, Favorite,
+            'Такого рецепта нет в избранном!',
             'Такой рецепт есть в избранном!',
             FavoriteSerializer
         )
@@ -76,6 +77,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
     def shopping_cart(self, request, id):
         return self.favorite_or_cart(
             request, id, Cart,
+            'Такого рецепта нет в корзине!',
             'Такой рецепт есть в корзине!',
             CartSerializer
         )
