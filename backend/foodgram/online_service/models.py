@@ -11,6 +11,8 @@ class Tag(models.Model):
     color = models.CharField('Цвет тега',
                              unique=True,
                              max_length=7)
+    # пояснение к замечанию ревьюера: в качестве альтернативы установки django-colorfield выбран способ
+    # в котором длина Charfield указывается "7", а в шаблоне фронта уже добавлен нужный плагин JS
     slug = models.SlugField('Уникальный слаг', unique=True)
 
     class Meta:
