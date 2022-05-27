@@ -16,7 +16,7 @@ class IsFavorited(Enum):
 class IsInCart(Enum):
     IN = 1
     NOT_IN = 0
-#class IsFavoritedIsInCart(Enum):
+# class IsFavoritedIsInCart(Enum):
 #    IN = 1
 #    NOT_IN = 0
 
